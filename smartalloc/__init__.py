@@ -37,8 +37,8 @@ the resource variable as the key.  The second is a list of the indices of the
 tasks from the input are "worked" in the allocation result.
 """
 from uuid import uuid4 as _uuid4
-from z3 import (And as _Z3And, Or as _Z3Or, Solver as _Z3Solver, Int as _Z3Int,
-                Real as _Z3Real, Sum as _Z3Sum)
+from z3 import (If, And as _Z3And, Or as _Z3Or, Solver as _Z3Solver,
+                Bool as _Z3Bool, Int as _Z3Int, Real as _Z3Real, Sum as _Z3Sum)
 
 
 __version__ = '0.0.0'
@@ -48,6 +48,7 @@ __all__ = [
     'InvalidResourceConstraints',
     'Int',
     'Real',
+    'If',
     'all',
     'any',
     'allocate',
@@ -62,6 +63,25 @@ class InvalidResourceConstraints(Exception):
     constraints (before considering tasking constraints).
     """
     pass
+
+
+def Bool(name=None):
+    """
+    Creates a resource variable on the domain of Boolean values (true or false).
+
+    Parameters
+    ----------
+    name : str, optional
+        Name of the variable.  All variable objects with the same name and
+        domain reference the same modeled variable.  Default's to a randomly
+        generated UUID.
+
+    Returns
+    -------
+    boolean-valued resource variable for use in allocation constraints
+    """
+    name = str(_uuid4()) if name is None else name
+    return _Z3Bool(name)
 
 
 def Int(name=None):
