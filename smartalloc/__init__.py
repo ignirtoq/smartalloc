@@ -41,7 +41,7 @@ from z3 import (If, And as _Z3And, Or as _Z3Or, Solver as _Z3Solver,
                 Bool as _Z3Bool, Int as _Z3Int, Real as _Z3Real, Sum as _Z3Sum)
 
 
-__version__ = '0.0.0'
+__version__ = '0.0.1'
 
 
 __all__ = [
