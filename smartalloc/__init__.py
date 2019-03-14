@@ -1,5 +1,5 @@
 """
-smartalloc
+SMarTalloc
 ==========
 
 A collection of utility functions for using Microsoft's Z3 theorem prover to
